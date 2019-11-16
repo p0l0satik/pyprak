@@ -16,9 +16,12 @@ def randrange(*args):
     # print(Warg, args)
     if l == nl and tuple(Warg[:l]) == args[:l] or (l == 1 and Warg[1] == args[0]):
         # print((now + Warg[2]) % Warg[1] )
-        now += Warg[2]
-        if now <= Warg[1]:
-            now = Warg[0] + (-Warg[1] + now) 
+        if Warg[2] > 0:
+            now = now + Warg[2] if (now + Warg[2]) % Warg[1] > Warg[0] else Warg[0] + (now + Warg[2]) % Warg[1]
+        else:
+            now += Warg[2]
+            if now <= Warg[1]:
+                now = Warg[0] + (-Warg[1] + now) 
         return now 
     else:
         Warg = [0, 0, 1]
